@@ -1,0 +1,19 @@
+<table>
+  <tbody>
+    <%@doc.css('.wikitable tr').slice(1..@length).each do |link|%>
+    <tr>
+      <%byebug%>
+      <% if link.css("a").present?%>
+      <% puts link.css("a").attr("href")%>
+      <td><%= link_to link.content.split("\n").slice(1), "https://en.wikipedia.org#{link.css("a").attr("href").to_s}"%></td>
+      <%else%>
+      <td><%= link.content.split("\n").slice(1)%></td>
+      <%end%>
+      <td><%= link.content.split("\n").slice(2)%></td>
+      <td><%= link.content.split("\n").slice(3)%></td>
+      <td><%= link.content.split("\n").slice(5)%></td>
+      <td><%= link.content.split("\n").slice(6)%></td>
+    </tr>
+    <%end%>
+  </tbody>
+</table>
